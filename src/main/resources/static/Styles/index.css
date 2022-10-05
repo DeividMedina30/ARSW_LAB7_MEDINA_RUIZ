@@ -38,6 +38,7 @@
 .classCanvasInter{
     min-width: 90%;
     min-height: 90%;
+    border: 1px solid black;
 }
 
 .coordenadas{
