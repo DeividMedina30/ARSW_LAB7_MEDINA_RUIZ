@@ -65,12 +65,6 @@ var modulo = (function(){
     }
 
     return{
-        init:function(){
-             // Get a reference to our pointer div
-             var pointerZone = document.getElementById("pointerZone");
-             // Add an event handler for the pointerdown event
-             pointerZone.addEventListener("pointerdown", pointerHandler, false);
-        },
         getBluePrintsByAuthor:getBluePrintsByAuthor,
         getBluePrintToShow:getBluePrintToShow
     };
