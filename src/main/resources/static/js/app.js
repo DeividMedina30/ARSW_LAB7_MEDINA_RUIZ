@@ -25,7 +25,6 @@ var modulo = (function(){
     }
 
     var _setTable = function(blueprintsArray){
-        console.log(blueprintsArray[0])
         blueprintsArray.map(blueprint => $("table tbody").append("<tr><td>"+ (blueprintsArray.indexOf(blueprint)+1) +"</td><td>" + blueprint[0] + "</td><td>" + blueprint[1] + "</td><td><button type='button' class='btn btn-outline-success' id="+blueprint[0] +" "+ "type='button' onclick=modulo.getBluePrintToShow(this)>Open</button></td></tr>"));
         var numArray = blueprintsArray.map(blueprint => blueprint[1]);
         $("#totalPoints").text(" Total user points: " + numArray.reduce((previousValue, currentValue) => previousValue + currentValue, 0));
@@ -38,7 +37,7 @@ var modulo = (function(){
     }
 
     var _drawInCanvas = function(pointsOne){
-        var canvas = document.getElementById('idCnavas');
+        var canvas = document.getElementById('idCanvas');
         var ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath(); // Inicia una nueva ruta al vaciar la lista de subrutas.
@@ -58,7 +57,20 @@ var modulo = (function(){
         $("#idCurrentBluePrint").text("Current Blueprint: "+ nameBluePrint)
     }
 
+    var pointerHandler = function (event) {
+        // Get a reference to our coordinates div
+        var coords = document.getElementById("coordenadas");
+        // Write the coordinates of the pointer to the div
+        coords.innerHTML = 'x: ' + event.pageX + ', y: ' + event.pageY;
+    }
+
     return{
+        init:function(){
+             // Get a reference to our pointer div
+             var pointerZone = document.getElementById("pointerZone");
+             // Add an event handler for the pointerdown event
+             pointerZone.addEventListener("pointerdown", pointerHandler, false);
+        },
         getBluePrintsByAuthor:getBluePrintsByAuthor,
         getBluePrintToShow:getBluePrintToShow
     };

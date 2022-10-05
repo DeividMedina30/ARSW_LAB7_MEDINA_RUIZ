@@ -11,9 +11,25 @@
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="js/apimock.js"></script>
     <script src="js/app.js"></script>
+    <script type='text/javascript'>
+      function init() {
+        // Get a reference to our pointer div
+        var pointerZone = document.getElementById("pointerZone");
+        // Add an event handler for the pointerdown event
+        pointerZone.addEventListener("pointerdown", pointerHandler, false);
+      }
+
+      function pointerHandler(event) {
+        // Get a reference to our coordinates div
+        var coords = document.getElementById("coordenadas");
+        // Write the coordinates of the pointer to the div
+        coords.innerHTML = 'x: ' + event.pageX + ', y: ' + event.pageY;
+      }
+
+    </script>
     <title>Blueprints</title>
   </head>
-  <body>
+  <body onLoad="app.init()">
     <div class="container">
         <h1>Blueprints: </h1><br></br>
         <form class="form-inline">
@@ -40,8 +56,11 @@
               </thead>
               <tbody>
               </tbody>
-          </table><br></br> 
-          <canvas class="classCanvas" id="idCnavas"></canvas>
+          </table><br></br>
+            <div class="classCanvas" id="pointerZone">
+                <canvas class="classCanvasInter" id="idCanvas"></canvas>
+            </div><br>
+            <div class="coordenadas" id="coordenadas"></div>
           <h1 class="t3" id="totalPoints"></h1>
         </div>
     </div>
