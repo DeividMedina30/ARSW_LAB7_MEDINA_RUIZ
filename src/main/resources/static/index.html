@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="./Styles/index.css">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <title>Blueprints</title>
+    <script>
+      window.onload = function(){
+        document.onmousedown = function(e){
+          var canv = document.getElementById("coord");
+          canv.innerHTML = "Left: "+e.pageX+" Top: "+e.pageY;
+        }
+      }
+    </script>
   </head>
   <!-- onLoad="moduloCanvas.init()" -->
   <body onLoad="moduloCanvas.init()">
@@ -43,7 +51,7 @@
             <div class="classCanvas" id="pointerZone">
                 <canvas class="classCanvasInter" id="idCanvas"></canvas>
             </div><br>
-            <div class="coordenadas" id="coordenadas"></div>
+            <div class="coord" id="coord">
           <h1 class="t3" id="totalPoints"></h1>
         </div>
     </div>

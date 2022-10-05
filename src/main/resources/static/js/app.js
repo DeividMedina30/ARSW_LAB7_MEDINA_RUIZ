@@ -2,6 +2,7 @@ var modulo = (function(){
     var _author;
     var _bluePrints = [];
     var _modulo = apimock;
+    var _actualBluePrint
 
     var getBluePrintsByAuthor = function(){
         _bluePrints = [];
@@ -32,6 +33,7 @@ var modulo = (function(){
 
     var getBluePrintToShow = function(button){
         idBlueprint = button.id;
+        _actualBluePrint = idBlueprint;
         setnameBlueprint(idBlueprint)
         _modulo.getBlueprintsByNameAndAuthor(_author,idBlueprint,_drawInCanvas);
     }
@@ -57,6 +59,10 @@ var modulo = (function(){
         $("#idCurrentBluePrint").text("Current Blueprint: "+ nameBluePrint)
     }
 
+    var getBluePrint = function(){
+        return _actualBluePrint;
+    }
+
     var pointerHandler = function (event) {
         // Get a reference to our coordinates div
         var coords = document.getElementById("coordenadas");
@@ -66,6 +72,8 @@ var modulo = (function(){
 
     return{
         getBluePrintsByAuthor:getBluePrintsByAuthor,
-        getBluePrintToShow:getBluePrintToShow
+        getBluePrintToShow:getBluePrintToShow,
+        _drawInCanvas:_drawInCanvas,
+        getBluePrint:getBluePrint
     };
 })();
